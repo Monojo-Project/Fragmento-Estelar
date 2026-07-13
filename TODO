@@ -1,2 +1,13 @@
 chroot (entrar en chroot al sistema operativo)
 install-casata PATH (instala Casata, el gestor de aplicaciones, en la ruta asignada.
+
+MAS IMPORTANTE:
+Hacer que el flag --variant=string variant funcione correctamente. Actualmente solo puedes instalar la variante normal, o te sale:
+E: unrecognized or invalid option -
+
+Ejemplo en la terminal:
+david@lyndsos:/home/david/INFERNAL$ sudo ./Fragmento_Estelar-x86_64.AppImage create --os=debian --codename=trixie --variant=minbase --path=/mnt
+Sistema operativo a instalar: debian
+Codename de versión del sistema operativo a instalar: trixie
+La variante del sistema operativo a instalar es: minbase
+E: unrecognized or invalid option -
