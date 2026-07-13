@@ -1,0 +1,36 @@
+#!/bin/infernal
+
+###
+debian.infernal
+###
+
+variante = lower(variante)
+codename = lower(codename)
+
+import debootstrap-lib
+
+if variante == "normal" then
+    debootstrap-lib.normal(codename, dir)
+elseif variante == "minbase" then
+    debootstrap-lib.minbase(codename, dir)
+elseif variante == "buildd" then
+    debootstrap-lib.buildd(codename, dir)
+elseif variante == "scratch" then
+    debootstrap-lib.scratch(codename, dir)
+
+elseif variante == "gnome-full" then
+    debootstrap-lib.gnome-full(codename, dir)
+elseif variante == "kde-full" then
+    debootstrap-lib.kde-full(codename, dir)
+elseif variante == "xfce-full" then
+    debootstrap-lib.xfce-full(codename, dir)
+elseif variante == "lxqt-full" then
+    debootstrap-lib.lxqt-full(codename, dir)
+elseif variante == "lxde-full" then
+    debootstrap-lib.lxde-full(codename, dir)
+elseif variante == "cinnamon-full" then
+    debootstrap-lib.cinnamon-full(codename, dir)
+
+else
+    error(variante + " no es una variantee correcta. Prueba con: normal, minbase, buildd, scratch, gnome-full, kde-full, xfce-full, lxqt-full, lxde-full o cinnamon-full.")
+fi

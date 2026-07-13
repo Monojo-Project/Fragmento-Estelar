@@ -1,0 +1,27 @@
+Fragmento Estelar Help
+----------------------
+
+Ejecuta el el AppImage:
+./Fragmento_Estelar-x86_64.AppImage
+
+Luego pones que quieres hacer:
+  create (crear un sistema operativo)
+
+
+Después de create pones:
+--os=SISTEMA_OPERATIVO --codename=CODENAME_VERSION --path=DONDE_INSTALARLO
+Ejemplo:
+./Fragmento_Estelar-x86_64.AppImage create --os=debian --codename=trixie --path=/mnt/hdd
+
+Tambien puedes poner después de os y codename un --variant=VARIANTE, muy útil en Debian. En Debian puedes poner como VARIANTE:
+normal (solo trae terminal pero bastante completo)
+minbase (trae muchas menos cosas, pero arrancará sin complicaciones)
+buildd (trae herramientas de desarrollo)
+scratch (solo trae APT y dpkg, nada más. Muy mínimo y te costará arrancarlo)
+---- Variantes 99% funcionales (solo tienes que añadir un usuario y ya) arrancará perfecto -----
+gnome-full (el entorno de escritorio de GNOME entero y arrancará fácilmente)
+kde-full (el entorno de escritorio de KDE Plasma entero y arrancará fácilmente)
+xfce-full (el entorno de escritorio XFCE 4 entero y arrancará fácilmente)
+lxqt-full (el entorno de escritorio LXQt entero y arrancará fácilmente)
+lxde-full (el entorno de escritorio LXDE entero y arrancará fácilmente)
+cinnamon-full (el entorno de escritorio Cinnamon entero y arrancará fácilmente)

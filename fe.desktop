@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Fragmento Estelar
+Comment=Instalador de sistemas operativos base
+Exec=AppRun
+Icon=icon
+Type=Application
+Categories=Utility;System;Development;

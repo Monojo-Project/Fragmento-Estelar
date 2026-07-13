@@ -1,0 +1,116 @@
+#!/bin/infernal
+
+#verificar si se ejecutó con permisos de root
+usuario = whoami
+if usuario != "root" then
+    error("Tienes que ejecutar el AppImage como root (sudo).")
+    exit(2)
+fi
+
+RutaScript = here() #hace que el valor de la variable sea un string con la ruta al script, no al pwd
+global variante = "normal" #la variante por defecto que instala de un sistema operativo
+
+#funciones de ejecucion
+function CrearDebian()
+    "$RutaScript/infernal" "$RutaScript/../local/fe/profiles/debian.infernal"
+fi
+
+flags (0, #independientemente del lugar del flag, ejecutar
+    --help|-h{
+        cat "$RutaScript/../local/fe/HELP"
+    }
+    --version|-v{
+        cat "$RutaScript/../local/fe/VERSION"
+    }
+
+    create{
+        global solicitud = "create"
+    }
+
+    --os=string sistema{
+        if solicitud == "create" then
+            global so = lower(sistema)
+            success("Sistema operativo a instalar: " + sistema)
+        fi
+    }
+    --codename=string codenamed{
+        if solicitud == "create" then
+            if so == "" then
+                error("Debes usar los flags --os antes de --codename")
+                exit(2)
+            fi
+            global codename = lower(codenamed)
+            success("Codename de versión del sistema operativo a instalar: " + codename)
+        fi
+    }
+    --variant=string variant{
+        if solicitud == "create" then
+            if so == "" or codename == "" then
+                error("Debes usar los flags --os y --codename antes de elegir la variante.")
+                exit(2)
+            fi
+            global variante = lower(variant)
+            success("La variante del sistema operativo a instalar es: " + variante)
+        fi
+    }
+    --path=string path{
+        if so == "" or codename == "" then
+            print("Debes usar --os, luego --codename y finalmente declarar el path.")
+            exit(2)
+        fi
+        global dir = $path
+    }
+
+    *{ #lo que pasa si ningun flag se cumple
+        cat "$RutaScript/../local/fe/HELP"
+        print("La versión de Fragmento Estelar (FE) que tienes es la:")
+        cat "$RutaScript/../local/fe/VERSION"
+        exit(0)
+    }
+)
+
+#ejecucion con easter eggs de TODAS las versiones de Debian
+if so == "debian" then
+    if codename == "forky" then #Debian 14 (2027)
+        warn("Espera a 2027 o 2028 hasta que salga.")
+    elseif codename == "trixie" then #Debian 13 (2025)
+        CrearDebian()
+    elseif codename == "bookworm" then #Debian 12 (2023)
+        CrearDebian()
+    elseif codename == "bullseye" then #Debian 11 (2021)
+        warn("Esta versión dejará de recibir actualizaciones en agosto de 2026.")
+        CrearDebian()
+    elseif codename == "buster" then #Debian 10 (2019)
+        print("Buster es la versión 10 y esa versión es del año 2019 y ya no existe...")
+    elseif codename == "stretch" then #Debian 9 (2017)
+        print("Stretch es la versión 9 y esa versión es del año 2017 y ya no existe... A diferencia de iPhone y Windows, estos no se saltaron la versión 9. JAJAJA")
+    elseif codename == "jessie" then #Debian 8 (2015)
+        print("Jessie es la versión 8 y esa versión es del año 2015 y ya no existe...")
+    elseif codename == "wheezy" then #Debian 7 (2013)
+        print("Wheezy es la versión 7 y esa versión es del año 2013 y ya no existe...")
+    elseif codename == "squeeze" then #Debian 6 (2011)
+        print("Squeeze es la versión 6 y esa versión es del 2011 y ya no existe...")
+    elseif codename == "lenny" then #Debian 5 (2009)
+        print("Lenny es la versión 5 y esa versión es del 2009 y ya no existe...")
+    elseif codename == "etch" then #Debian 4 (2007)
+        print("Etch es la versión 4 y esa versión es del 2007 y ya no existe...")
+    elseif codename == "sarge" then #Debian 3.1 (2005)
+        print("Sarge es la versión 3.1 y esa versión es del 2005 y ya no existe...")
+    elseif codename == "woody" then #Debian 3.0 (2002)
+        print("Woody es la versión 3.0 y esa versión es del 2002 y ya no existe...")
+    elseif codename == "potato" then #Debian 2.2 (2000)
+        print("Potato es la versión 2.2 y esa versión es del año 2000 y ya no existe...")
+    elseif codename == "slink" then #Debian 2.1 (1999)
+        print("Slink es la versión 2.1 y esa versión es del 1999 y ya no existe...")
+    elseif codename == "hamm" then #Debian 2.0 (1998)
+        print("Hamm es la versión 2.0 y esa versión es del 1998 y ya no existe...")
+    elseif codename == "bo" then #Debian 1.3 (1997)
+        print("Bo es la versión 1.3 y esa versión es del 1997 y ya no existe...")
+    elseif codename == "rex" then #Debian 1.2 (1996)
+        print("Rex es la versión 1.2 y esa versión es del 1996 y ya no existe...")
+    elseif codename == "buzz" then #Debian 1.1 (1996)
+        print("Buzz es la versión 1.1 y esa versión es del 1996 y ya no existe...")
+    else
+        error("El codename " + codename + " no es un codename de Debian.")
+    fi
+fi

@@ -1,0 +1,5 @@
+#!/bin/bash
+#AppRun de FE AppImage
+
+HERE=$(dirname "$0")
+exec "$HERE/usr/bin/infernal" "$HERE/usr/bin/fe" "$@"
