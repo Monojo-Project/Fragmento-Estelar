@@ -32,5 +32,5 @@ elseif variante == "cinnamon-full" then
     debootstrap-lib.cinnamon-full(codename, dir)
 
 else
-    error(variante + " no es una variantee correcta. Prueba con: normal, minbase, buildd, scratch, gnome-full, kde-full, xfce-full, lxqt-full, lxde-full o cinnamon-full.")
+    error(variante + " no es una variante correcta. Prueba con: normal, minbase, buildd, scratch, gnome-full, kde-full, xfce-full, lxqt-full, lxde-full o cinnamon-full.")
 fi

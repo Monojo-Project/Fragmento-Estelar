@@ -1,7 +1,18 @@
 [Desktop Entry]
-Name=Fragmento Estelar
+Categories=Utility;System;Development;
+Comment[en_US]=Instalador de sistemas operativos base
 Comment=Instalador de sistemas operativos base
 Exec=AppRun
+GenericName[en_US]=
+GenericName=
 Icon=icon
+MimeType=
+Name[en_US]=Fragmento Estelar
+Name=Fragmento Estelar
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
 Type=Application
-Categories=Utility;System;Development;
+X-KDE-SubstituteUID=false
+X-KDE-Username=
